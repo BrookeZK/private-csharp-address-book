@@ -4,18 +4,13 @@ namespace AddressBookApp.Models
 {
   public class AddressBook
   {
-    public string Name { get; set; }
-    public Dictionary<int, Contact> Contacts { get; } = new Dictionary<int, Contact>{};
+    public List<Contact> Contacts { get; } = new List<Contact>{};
     private int _currentId = 0;
-
-    public AddressBook(string name) {
-      Name = name;
-    }
 
     public void AddContact(Contact newContact) 
     {
-      int id = AssignId();
-      Contacts.Add(id, newContact);
+      newContact.id = AssignId();
+      Contacts.Add(newContact);
     }
 
     public int AssignId() 
@@ -24,29 +19,16 @@ namespace AddressBookApp.Models
       return _currentId;
     }
 
+    #nullable enable
     public Contact? FindContact(int id)
     {
-      if (Contacts[id] == null)
-      {
-        return null;
-      }
-      else 
-      {
-        return Contacts[id];
-      }
+      return Contacts.Find(contact => contact.id == id);
     }
+    #nullable disable
 
-    public bool? DeleteContact(int id) 
+    public void DeleteContact(Contact contact) 
     {
-      if (Contacts[id] == null)
-      {
-        return null;
-      }
-      else 
-      {
-        Contacts.Remove(id);
-        return true;
-      }
+      Contacts.Remove(contact);
     }
   }
 }

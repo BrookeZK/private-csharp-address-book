@@ -8,23 +8,18 @@ namespace AddressBookApp.Models
     public string LastName { get; }
     public string PhoneNumber { get; }
     public string Address { get; }
-    private static List<Contact> _allContacts = new List<Contact>{};
+    public int id { get; set; } = 0;
     
-    public Contact(string first, string last, string phoneNumber) {
+    public Contact(string first, string last, string phoneNumber, string address) {
       FirstName = first;
       LastName = last;
       PhoneNumber = phoneNumber;
-      _allContacts.Add(this);
+      Address = address;
     }
 
     public string FullName() 
     {
       return FirstName + " " + LastName;
-    }
-
-    public static List<Contact> GetAll()
-    {
-      return _allContacts;
     }
   }
 }
