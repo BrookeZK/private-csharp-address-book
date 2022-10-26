@@ -8,7 +8,6 @@ namespace AddressBookApp.Models
     public string LastName { get; }
     public string PhoneNumber { get; }
     public string Address { get; }
-    public int id { get; set; } = 0;
     
     public Contact(string first, string last, string phoneNumber, string address) {
       FirstName = first;

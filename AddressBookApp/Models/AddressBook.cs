@@ -1,17 +1,12 @@
 using System.Collections.Generic;
+using System;
 
 namespace AddressBookApp.Models
 {
   public class AddressBook
   {
-    public List<Contact> Contacts { get; } = new List<Contact>{};
+    public Dictionary<int, Contact> Contacts { get; } = new Dictionary<int, Contact>{};
     private int _currentId = 0;
-
-    public void AddContact(Contact newContact) 
-    {
-      newContact.id = AssignId();
-      Contacts.Add(newContact);
-    }
 
     public int AssignId() 
     {
@@ -19,16 +14,34 @@ namespace AddressBookApp.Models
       return _currentId;
     }
 
-    #nullable enable
-    public Contact? FindContact(int id)
+    public void AddContact(Contact newContact) 
     {
-      return Contacts.Find(contact => contact.id == id);
+      int id = AssignId();
+      Contacts.Add(id, newContact);
     }
-    #nullable disable
 
-    public void DeleteContact(Contact contact) 
+    public Contact FindContact(int id)
     {
-      Contacts.Remove(contact);
+      if (Contacts.ContainsKey(id))
+      {
+        return Contacts[id];
+      }
+      else
+      {
+        throw new NullReferenceException();
+      }
+    }
+
+    public void DeleteContact(int id) 
+    {
+      if (Contacts.ContainsKey(id))
+      {
+        Contacts.Remove(id);
+      }
+      else
+      {
+        throw new NullReferenceException();
+      }
     }
   }
 }

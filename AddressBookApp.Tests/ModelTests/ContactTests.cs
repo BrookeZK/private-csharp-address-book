@@ -6,30 +6,46 @@ namespace AddressBookApp.Tests
   [TestClass]
   public class ContactTests
   {
-    // [TestMethod]
-    // public void TriangleConstructor_CreatesInstanceOfTriangle_Triangle()
-    // {
-    //   Triangle newTriangle = new Triangle(2,3,4);
-    //   Assert.AreEqual(typeof(Triangle), newTriangle.GetType());
-    // }
+    [TestMethod]
+    public void ContactConstructor_CreatesInstanceOfContact_Contact()
+    {
+      Contact newContact = new Contact("brandy", "woo", "503-442-2333", "1224 SE Kwisp");
+      Assert.AreEqual(typeof(Contact), newContact.GetType());
+    }
 
-    // [TestMethod]
-    // public void GetSides_ReturnsSides_Int()
-    // {
-    //   int length1 = 2;
-    //   int length2 = 3;
-    //   int length3 = 4;
-    //   Triangle newTriangle = new Triangle(length1,length2,length3);
-    //   Assert.AreEqual(2, newTriangle.Side1);
-    //   Assert.AreEqual(3, newTriangle.Side2);
-    //   Assert.AreEqual(4, newTriangle.Side3);
-    // }
+    [TestMethod]
+    public void GetContactFirstName_ReturnsValue_String()
+    {
+      Contact newContact = new Contact("brandy", "woo", "503-442-2333", "1224 SE Kwisp");
+      Assert.AreEqual("brandy", newContact.FirstName);
+    }
 
-    // [TestMethod]
-    // public void CheckType_ReturnsNotATriangle_String()
-    // {
-    //   Triangle newTriangle = new Triangle(22,3,4);
-    //   Assert.AreEqual("not a triangle", newTriangle.CheckType());
-    // }
+    [TestMethod]
+    public void GetContactLastName_ReturnsValue_String()
+    {
+      Contact newContact = new Contact("brandy", "woo", "503-442-2333", "1224 SE Kwisp");
+      Assert.AreEqual("woo", newContact.LastName);
+    }
+
+    [TestMethod]
+    public void GetContactPhoneNumber_ReturnsValue_String()
+    {
+      Contact newContact = new Contact("brandy", "woo", "503-442-2333", "1224 SE Kwisp");
+      Assert.AreEqual("503-442-2333", newContact.PhoneNumber);
+    }
+
+    [TestMethod]
+    public void GetContactAddress_ReturnsValue_String()
+    {
+      Contact newContact = new Contact("brandy", "woo", "503-442-2333", "1224 SE Kwisp");
+      Assert.AreEqual("1224 SE Kwisp", newContact.Address);
+    }
+
+    [TestMethod]
+    public void FullName_ReturnsContactFirstAndLastNames_String()
+    {
+      Contact newContact = new Contact("brandy", "woo", "503-442-2333", "1224 SE Kwisp");
+      Assert.AreEqual("brandy woo", newContact.FullName());
+    }
   }
 }
