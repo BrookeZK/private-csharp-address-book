@@ -144,9 +144,9 @@ class Program
 
   static void ContactDetails()
   {
-    int id = IdConfirmation();
     try
     {
+      int id = IdConfirmation();
       Contact contact = addressBook.FindContact(id);
       Console.WriteLine("~~~~~~~~~~~Contact~Details~~~~~~~~~~");
       Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -164,9 +164,9 @@ class Program
 
   static void DeleteContact()
   {
-    int id = IdConfirmation();
     try
     {
+      int id = IdConfirmation();
       Console.WriteLine("~~~~~~~~~~~Delete~Contact~~~~~~~~~~~");
       Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
       addressBook.DeleteContact(id);
